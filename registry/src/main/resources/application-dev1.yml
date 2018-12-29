@@ -1,0 +1,15 @@
+server:
+  port: 9100
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/, http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:9101/eureka/
+
+spring:
+  security:
+    user:
+      name: registry
+      password: 123456
