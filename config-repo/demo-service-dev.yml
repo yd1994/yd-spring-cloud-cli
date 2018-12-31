@@ -2,4 +2,10 @@ feign:
   hystrix:
     enabled: true
 
+spring:
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
+
 testconfig: success
