@@ -8,3 +8,7 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
