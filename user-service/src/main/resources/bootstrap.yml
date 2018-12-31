@@ -1,3 +1,14 @@
+server:
+  port: 9110
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://registry:123456@localhost:9100/eureka/
+      # defaultZone: http://registry1:123456@peer1:9100/eureka/, http://registry2:123456@peer2:9101/eureka/
+
 spring:
   application:
     name: user-service
