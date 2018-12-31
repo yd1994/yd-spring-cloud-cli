@@ -12,3 +12,12 @@ eureka:
 spring:
   application:
     name: user-service
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+      username: config
+      password: 123456
