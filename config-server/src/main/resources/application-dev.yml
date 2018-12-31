@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yd1994/yd-spring-cloud-cli
+          search-paths: config-repo
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
+    port: 5672
+  security:
+    user:
+      password: 123456
