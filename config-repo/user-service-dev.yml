@@ -1,0 +1,21 @@
+server:
+  port: 9110
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://registry:123456@localhost:9100/eureka/
+      # defaultZone: http://registry1:123456@peer1:9100/eureka/, http://registry2:123456@peer2:9101/eureka/
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3308/yd_spring_cloud_cli?charset=utf8mb4&serverTimezone=GMT&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
