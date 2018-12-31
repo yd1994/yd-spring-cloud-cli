@@ -3,13 +3,13 @@ server:
 
 eureka:
   instance:
-    hostname: ${spring.cloud.client.ip-address}
+    hostname: peer2
   client:
     service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/, http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:9100/eureka/
+      defaultZone: http://registry1:123456@peer1:9100/eureka/
 
 spring:
   security:
     user:
-      name: registry
+      name: registry2
       password: 123456
