@@ -1,0 +1,12 @@
+spring:
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
+
+turbine:
+  app-config: demo-service
+  aggregator:
+    clusterConfig: default
+  cluster-name-expression: new String("default")
+  combine-host-port: true
