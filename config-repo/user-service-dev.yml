@@ -12,3 +12,15 @@ spring:
     username: guest
     password: 123456
     host: localhost
+
+
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      access-token-uri: http://localhost:9108/oauth/token
+      user-authorization-uri: http://localhost:9108/oauth/authorize
+      client-id: user-service
+      client-secret: user_service_password
+    resource:
+      user-info-uri: http://localhost:9041/users/current

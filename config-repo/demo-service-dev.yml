@@ -9,3 +9,14 @@ spring:
     host: localhost
 
 testconfig: success3
+
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      access-token-uri: http://localhost:9108/oauth/token
+      user-authorization-uri: http://localhost:9108/oauth/authorize
+      client-id: demo-service
+      client-secret: demo_service_password
+    resource:
+      user-info-uri: http://localhost:9108/users/current
