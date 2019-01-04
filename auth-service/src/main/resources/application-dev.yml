@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3308/yd_spring_cloud_cli?charset=utf8mb4&serverTimezone=GMT&useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  jackson:
+    serialization:
+      indent-output: true
+  redis:
+    host: 127.0.0.1
+    port: 6380
+    password: 123456
+    database: 5
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
