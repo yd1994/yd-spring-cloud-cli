@@ -8,3 +8,14 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      access-token-uri: http://localhost:9041/oauth/token
+      client-id: user-service
+      client-secret: user_service_password
+    resource:
+      user-info-uri: http://localhost:9041/users/current
+

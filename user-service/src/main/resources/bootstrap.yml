@@ -19,5 +19,5 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
-      username: config
+      username: user
       password: 123456
