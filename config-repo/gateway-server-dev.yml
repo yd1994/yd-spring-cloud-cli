@@ -20,9 +20,9 @@ spring:
       - id: auth-service_route
         uri: lb://AUTH-SERVICE
         predicates:
-        - Path=/auth-service/{segment}
+        - Path=/auth-service/**
         filters:
-        - SetPath=/{segment}
+        - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
         - name: RequestRateLimiter
           args:
             key-resolver: '#{@hostAddrKeyResolver}'
@@ -31,9 +31,9 @@ spring:
       - id: config-server_route
         uri: lb://CONFIG-SERVER
         predicates:
-        - Path=/config-server/{segment}
+        - Path=/config-server/**
         filters:
-        - SetPath=/{segment}
+        - RewritePath=/config-server/(?<segment>.*), /$\{segment}
         - name: RequestRateLimiter
           args:
             key-resolver: '#{@hostAddrKeyResolver}'
@@ -42,9 +42,9 @@ spring:
       - id: user-server_route
         uri: lb://USER-SERVICE
         predicates:
-        - Path=/user-service/{segment}
+        - Path=/user-service/**
         filters:
-        - SetPath=/{segment}
+        - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - name: RequestRateLimiter
           args:
             key-resolver: '#{@hostAddrKeyResolver}'
