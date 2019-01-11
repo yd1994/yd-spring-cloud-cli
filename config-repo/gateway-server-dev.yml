@@ -17,6 +17,16 @@ spring:
   cloud:
     gateway:
       routes:
+      - id: demo-server_route
+        uri: lb://DEMO-SERVICE
+        predicates:
+        - Path=/demo/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
       - id: auth-service_route
         uri: lb://AUTH-SERVICE
         predicates:
@@ -31,16 +41,6 @@ spring:
         uri: lb://CONFIG-SERVER
         predicates:
         - Path=/config/**
-        filters:
-        - name: RequestRateLimiter
-          args:
-            key-resolver: '#{@hostAddrKeyResolver}'
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
-      - id: demo-server_route
-        uri: lb://DEMO-SERVICE
-        predicates:
-        - Path=/demo/**
         filters:
         - name: RequestRateLimiter
           args:
