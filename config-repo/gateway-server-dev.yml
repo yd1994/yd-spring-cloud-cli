@@ -53,9 +53,9 @@ spring:
       - id: demo-server_route
         uri: lb://DEMO-SERVICE
         predicates:
-        - Path=/demo-service/{segment}
+        - Path=/demo-service/(?<segment>.*)
         filters:
-        - SetPath=/{segment}
+        - SetPath=/$\{segment}
         - name: RequestRateLimiter
           args:
             key-resolver: '#{@hostAddrKeyResolver}'
