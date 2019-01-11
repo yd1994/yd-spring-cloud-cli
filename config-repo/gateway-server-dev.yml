@@ -18,7 +18,7 @@ spring:
     gateway:
       routes:
       - id: auth-service_route
-        uri: http://localhost:9108
+        uri: lb://AUTH-SERVICE
         predicates:
         - Path=/uaa/**
         filters:
@@ -28,7 +28,7 @@ spring:
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 20
       - id: config-server_route
-        uri: http://localhost:9105
+        uri: lb://CONFIG-SERVER
         predicates:
         - Path=/config/**
         filters:
@@ -38,7 +38,7 @@ spring:
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 20
       - id: demo-server_route
-        uri: http://localhost:9115
+        uri: lb://DEMO-SERVICE
         predicates:
         - Path=/demo/**
         filters:
@@ -48,7 +48,7 @@ spring:
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 20
       - id: user-server_route
-        uri: http://localhost:9110
+        uri: lb://USER-SERVICE
         predicates:
         - Path=/user/**
         filters:
