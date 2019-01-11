@@ -61,3 +61,14 @@ spring:
             key-resolver: '#{@hostAddrKeyResolver}'
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 20
+
+security:
+  oauth2:
+    client:
+      grant-type: client_credentials
+      access-token-uri: http://localhost:9130/auth-service/oauth/token
+      user-authorization-uri: http://localhost:9130/auth-service/oauth/authorize
+      client-id: gateway-server
+      client-secret: gateway-server_password
+    resource:
+      user-info-uri: http://localhost:9130/auth-service/users/current
