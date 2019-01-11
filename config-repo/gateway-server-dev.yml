@@ -16,44 +16,7 @@ spring:
     host: localhost
   cloud:
     gateway:
-      routes:
-      - id: auth-service_route
-        uri: lb://AUTH-SERVICE
-        predicates:
-        - Path=/uaa/**
-        filters:
-        - name: RequestRateLimiter
-          args:
-            key-resolver: '#{@hostAddrKeyResolver}'
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
-      - id: config-server_route
-        uri: lb://CONFIG-SERVER
-        predicates:
-        - Path=/config/**
-        filters:
-        - name: RequestRateLimiter
-          args:
-            key-resolver: '#{@hostAddrKeyResolver}'
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
-      - id: demo-server_route
-        uri: lb://DEMO-SERVICE
-        predicates:
-        - Path=/demo/**
-        filters:
-        - name: RequestRateLimiter
-          args:
-            key-resolver: '#{@hostAddrKeyResolver}'
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
-      - id: user-server_route
-        uri: lb://USER-SERVICE
-        predicates:
-        - Path=/user/**
-        filters:
-        - name: RequestRateLimiter
-          args:
-            key-resolver: '#{@hostAddrKeyResolver}'
-            redis-rate-limiter.replenishRate: 10
-            redis-rate-limiter.burstCapacity: 20
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
