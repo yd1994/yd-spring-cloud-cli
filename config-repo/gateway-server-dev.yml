@@ -1,0 +1,16 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6380
+    password: 123456
+    database: 6
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+  rabbitmq:
+    username: guest
+    password: 123456
+    host: localhost
