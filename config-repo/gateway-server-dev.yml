@@ -14,3 +14,46 @@ spring:
     username: guest
     password: 123456
     host: localhost
+  cloud:
+    gateway:
+      routes:
+      - id: auth-service_route
+        uri: http://localhost:9108
+        predicates:
+        - Path=/uaa/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+      - id: config-server_route
+        uri: http://localhost:9105
+        predicates:
+        - Path=/config/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+      - id: demo-server_route
+        uri: http://localhost:9115
+        predicates:
+        - Path=/demo/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
+      - id: user-server_route
+        uri: http://localhost:9110
+        predicates:
+        - Path=/user/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            key-resolver: '#{@hostAddrKeyResolver}'
+            redis-rate-limiter.replenishRate: 10
+            redis-rate-limiter.burstCapacity: 20
