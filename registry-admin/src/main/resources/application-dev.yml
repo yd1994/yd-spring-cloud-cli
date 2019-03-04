@@ -1,0 +1,20 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+spring:
+  security:
+    user:
+      name: registry-admin
+      password: 123456
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: registry-admin
+      user.password: 123456
